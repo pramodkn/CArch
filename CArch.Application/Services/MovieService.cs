@@ -18,10 +18,15 @@ namespace CArch.Application.Services
         }
         public async Task<IEnumerable<MovieModel>> GetAllMovie()
         {
-            var movieEntity= await _movieRepository.GetAllAsync();
+            var movieEntity= await _movieRepository.GetMoviesWithGenre();
             var movieModel = movieEntity.Select(x => new MovieModel()
             {
-                Name = x.Name
+                Id = x.Id,
+                Name = x.Name,
+                MovieGenres = x.MovieGenres.Select(y => new MovieGenreModel() {
+                    Name = y.Genre.Name,
+                })
+                
             });
             return movieModel;
         }

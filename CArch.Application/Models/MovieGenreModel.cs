@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CArch.Core.Entities
+namespace CArch.Application.Models
 {
-    public class Movie
+    public class MovieGenreModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Duration { get; set; }
-        public IEnumerable<MovieGenre> MovieGenres { get; set; }
-
     }
 }
