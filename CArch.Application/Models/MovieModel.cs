@@ -6,6 +6,8 @@ namespace CArch.Application.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public IEnumerable<MovieGenreModel> MovieGenres { get; set; }
+        public IEnumerable<string> MovieGenres { get; set; }
+        public IEnumerable<string> MovieLanguages { get; set; }
+
     }
 }

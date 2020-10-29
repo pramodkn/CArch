@@ -18,9 +18,9 @@ namespace CArch.Infrastructure.Repositories
 
         }
 
-        public async Task<IEnumerable<Movie>> GetMoviesWithGenre()
+        public async Task<IEnumerable<Movie>> GetMovies()
         {
-            return await _cArchApplicationDbContext.Movies.Include(x => x.MovieGenres).ThenInclude(x=>x.Genre).ToListAsync();
+            return await _cArchApplicationDbContext.Movies.Include(x => x.MovieGenres).ThenInclude(x=>x.Genre).Include(x=>x.MovieLanguages).ThenInclude(x=>x.Language).ToListAsync();
         }
         public async Task<IEnumerable<Genre>> GetGenreAsync()
         {

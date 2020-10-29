@@ -4,8 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CArch.Infrastructure.Data;
+using CArch.Infrastructure.Models;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -27,10 +29,13 @@ namespace CArch.WebAPI
                 var services = scope.ServiceProvider;
                 try
                 {
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    CArchApplicationDbContextSeed.SeedIdentityAsync(userManager, roleManager).Wait();
                     var cArchApplicationDbContext = services.GetRequiredService<CArchApplicationDbContext>();
                     CArchApplicationDbContextSeed.SeedAsync(cArchApplicationDbContext).Wait();
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     throw;
                 }

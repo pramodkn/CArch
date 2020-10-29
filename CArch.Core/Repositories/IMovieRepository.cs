@@ -9,7 +9,7 @@ namespace CArch.Core.Repositories
 {
     public interface IMovieRepository :IRepository<Movie>
     {
-        Task<IEnumerable<Movie>> GetMoviesWithGenre();
+        Task<IEnumerable<Movie>> GetMovies();
         Task<IEnumerable<Genre>> GetGenreAsync();
         Task<IEnumerable<MovieGenre>> GetMovieGenreAsync();
     }

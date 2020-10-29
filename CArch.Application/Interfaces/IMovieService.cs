@@ -6,6 +6,6 @@ namespace CArch.Application.Interfaces
 {
     public interface IMovieService
     {
-        Task<IEnumerable<MovieModel>> GetAllMovie();
+        Task<IEnumerable<MovieModel>> GetMovies();
     }
 }

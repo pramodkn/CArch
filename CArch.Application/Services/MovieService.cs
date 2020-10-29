@@ -16,17 +16,15 @@ namespace CArch.Application.Services
         {
             _movieRepository = movieRepository;
         }
-        public async Task<IEnumerable<MovieModel>> GetAllMovie()
+        public async Task<IEnumerable<MovieModel>> GetMovies()
         {
-            var movieEntity= await _movieRepository.GetMoviesWithGenre();
+            var movieEntity= await _movieRepository.GetMovies();
             var movieModel = movieEntity.Select(x => new MovieModel()
             {
                 Id = x.Id,
                 Name = x.Name,
-                MovieGenres = x.MovieGenres.Select(y => new MovieGenreModel() {
-                    Name = y.Genre.Name,
-                })
-                
+                MovieGenres = x.MovieGenres.Select(y => y.Genre.Name).ToArray(),
+                MovieLanguages = x.MovieLanguages.Select(y => y.Language.Name).ToArray()
             });
             return movieModel;
         }

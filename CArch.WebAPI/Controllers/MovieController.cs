@@ -20,7 +20,7 @@ namespace CArch.WebAPI.Controllers
         }
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MovieModel>>> Get() {
-            return Ok(await _movieService.GetAllMovie());
+            return Ok(await _movieService.GetMovies());
         }
     }
 }

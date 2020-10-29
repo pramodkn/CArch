@@ -4,13 +4,10 @@ using System.Text;
 
 namespace CArch.Core.Entities
 {
-    public class Movie
+    public class Language
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Duration { get; set; }
-        public IEnumerable<MovieGenre> MovieGenres { get; set; }
         public IEnumerable<MovieLanguage> MovieLanguages { get; set; }
-
     }
 }
